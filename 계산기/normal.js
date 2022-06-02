@@ -17,8 +17,7 @@ const Context = (function() {
     Context.prototype.setStrategy = function(strategy) {    //계산기 선택한 것 할당해주는 함수
         this.strategy = strategy;
     }
-    Context.prototype.doAlgorithm = function(value, algorithm) {    //선택한 알고리즘 실행시켜주는 함수
-        this.algorithm = algorithm;
+    Context.prototype.doAlgorithm = function(value) {    //선택한 알고리즘 실행시켜주는 함수
         this.strategy.algorithm(value);
     }
     return Context;
@@ -96,95 +95,24 @@ const exponentiation = (function() {
 
 
 let context = new Context();
-// 팩토리얼
-
-context.setStrategy(new factorial());
-context.doAlgorithm(3);
 
 // 팩토리얼
-context.setStrategy(new absolute());
-context.doAlgorithm(-5);
+// context.setStrategy(new factorial());
+// context.doAlgorithm(3);
+// // 팩토리얼
 
+// context.setStrategy(new absolute());
+// context.doAlgorithm(-5);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 입력
-// class input{
-//     constructor(){
-//         this.read;
+// const set = {
+//     setOperation(operation) {
+//       return context.setStrategy(new operation());
+//     }
+// }
+// const dooneValue = {
+//     doExecute(number) {
+//       return context.doAlgorithm(number);
 //     }
 // }
 
-// class Choice extends input{
-//     constructor(){
-//         this.normOrEngine;
-//     }
-// }
-
-// class Number extends input{
-//     constructor(){
-//     }
-// }
-
-// Choice.prototype.choiceCalculation = function(){
-//     console.log(`계산기를 선택해주세요(1. 공학계산기 2. 일반계산기)`)
-//     //공학인지 일반인지 받는 함수 필요 - 변수는 normOrEngine으로
-//     if (input == `1`){
-//         //공학 계산기 알고리즘 실행
-//     }
-//     else if(input == `2`){
-//         //일반 계산기 알고리즘 실행
-//     }
-//     else {
-//         console.log("다시 입력해주세요!")
-//         // while문으로 돌리기
-//     }
-// }
-
-// Choice.prototype.choiceOperation = function(){
-//     console.log(`원하는 공학 연산을 선택해주세요 : `);
-//     // 입력받기(operation으로)
-// }
-
-// Number.prototype.inputNumber = function(){
-//     console.log("숫자를 입력해주세요 : ")
-//     //숫자 입력받기
-// }
-
-// Choice.prototype.engineChoice = function(){
-//     console.log(`원하는 공학 연산을 선택해주세요 : `);
-//     // 입력받기(operationChoice로)
-//     console.log(`연산할 숫자를 입력해주세요 : `);
-//     //  연산할 숫자 입력받기
-//     switch(operationChoice){
-//         case `루트`:
-//             break;
-//         case `파이`:
-//             break;
-//         case `제곱`:
-//             break;
-//         case `제곱`:
-//             break;
-//         case `루트`:
-//             break;
-//         case `루트`:
-//             break;
-//     }
-// }
+const facto = Object.assign({}, context.setStrategy(new factorial()), context.doAlgorithm(3)); // 메서드 팩토리 패턴이 맞는지
