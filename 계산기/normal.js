@@ -20,7 +20,7 @@ const Context = (function() {
 })();
 
 // 값 1개
-one.prototype.pi = (function() {
+const pi = (function() {
     function pi() {}
     pi.prototype.algorithm = function(value) {    
         console.log(Math.PI * value);
