@@ -12,6 +12,7 @@ var SalaryCalculator = new Calculator();
 // 시간 * 일 수 || 시간 * 일 수 + 세금 || 시간 * 일 수 + 세금 + 주휴수당
 var SalaryCaculate = function () { };
 
+var u = new SalaryCaculate();
 // 시간 + 일 수 로직
 SalaryCaculate.prototype.timeDayCalculate = function (weekTime, hourlyWage) {
     return weekTime * hourlyWage;

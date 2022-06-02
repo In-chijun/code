@@ -1,31 +1,26 @@
-// //공학(일반) 계산기
-// class Calculator{};
-// var normalcalculation = new Calculator;
-
-// normalcalculation.prototype.oneValue = function(value){     // oneValue 생성자 함수
-//     this.value = value;
-// }
-// normalcalculation.prototype.twoValue = function(value1, value2){    // twoValue 생성자 함수
-//     this.value1 = value1;
-//     this.value2 = value2;
-// }
+var oneValue = function(value){
+    this.value = value
+}
+var twoValue = function(value1, value2){
+    this.value1 = value1
+    this.value2 = value2
+}
 
 const Context = (function() {
     function Context() {
         this.strategy = null;
     }
-    Context.prototype.setStrategy = function(strategy) {    //계산기 선택한 것 할당해주는 함수
+    Context.prototype.setStrategy = function(strategy) {
         this.strategy = strategy;
     }
-    Context.prototype.doAlgorithm = function(value, algorithm) {    //선택한 알고리즘 실행시켜주는 함수
-        this.algorithm = algorithm;
+    Context.prototype.doAlgorithm = function(value) {
         this.strategy.algorithm(value);
     }
     return Context;
 })();
 
 // 값 1개
-const pi = (function() {
+one.prototype.pi = (function() {
     function pi() {}
     pi.prototype.algorithm = function(value) {    
         console.log(Math.PI * value);
@@ -96,95 +91,24 @@ const exponentiation = (function() {
 
 
 let context = new Context();
-// 팩토리얼
-
-context.setStrategy(new factorial());
-context.doAlgorithm(3);
 
 // 팩토리얼
-context.setStrategy(new absolute());
-context.doAlgorithm(-5);
+// context.setStrategy(new factorial());
+// context.doAlgorithm(3);
+// // 팩토리얼
 
+// context.setStrategy(new absolute());
+// context.doAlgorithm(-5);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 입력
-// class input{
-//     constructor(){
-//         this.read;
+// const set = {
+//     setOperation(operation) {
+//       return context.setStrategy(new operation());
+//     }
+// }
+// const dooneValue = {
+//     doExecute(number) {
+//       return context.doAlgorithm(number);
 //     }
 // }
 
-// class Choice extends input{
-//     constructor(){
-//         this.normOrEngine;
-//     }
-// }
-
-// class Number extends input{
-//     constructor(){
-//     }
-// }
-
-// Choice.prototype.choiceCalculation = function(){
-//     console.log(`계산기를 선택해주세요(1. 공학계산기 2. 일반계산기)`)
-//     //공학인지 일반인지 받는 함수 필요 - 변수는 normOrEngine으로
-//     if (input == `1`){
-//         //공학 계산기 알고리즘 실행
-//     }
-//     else if(input == `2`){
-//         //일반 계산기 알고리즘 실행
-//     }
-//     else {
-//         console.log("다시 입력해주세요!")
-//         // while문으로 돌리기
-//     }
-// }
-
-// Choice.prototype.choiceOperation = function(){
-//     console.log(`원하는 공학 연산을 선택해주세요 : `);
-//     // 입력받기(operation으로)
-// }
-
-// Number.prototype.inputNumber = function(){
-//     console.log("숫자를 입력해주세요 : ")
-//     //숫자 입력받기
-// }
-
-// Choice.prototype.engineChoice = function(){
-//     console.log(`원하는 공학 연산을 선택해주세요 : `);
-//     // 입력받기(operationChoice로)
-//     console.log(`연산할 숫자를 입력해주세요 : `);
-//     //  연산할 숫자 입력받기
-//     switch(operationChoice){
-//         case `루트`:
-//             break;
-//         case `파이`:
-//             break;
-//         case `제곱`:
-//             break;
-//         case `제곱`:
-//             break;
-//         case `루트`:
-//             break;
-//         case `루트`:
-//             break;
-//     }
-// }
+const facto = Object.assign({}, context.setStrategy(new factorial()), context.doAlgorithm(3)); // 메서드 팩토리 패턴이 맞는지
