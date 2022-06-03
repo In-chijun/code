@@ -6,17 +6,29 @@ var twoValue = function(value1, value2){
     this.value2 = value2
 }
 
-const Context = (function() {
-    function Context() {
+const OneValue = (function() {
+    function OneValue() {
         this.strategy = null;
     }
-    Context.prototype.setStrategy = function(strategy) {
+    OneValue.prototype.setStrategy = function(strategy) {
         this.strategy = strategy;
     }
-    Context.prototype.doAlgorithm = function(value) {
+    OneValue.prototype.doAlgorithm = function(value) {
         this.strategy.algorithm(value);
     }
-    return Context;
+    return OneValue;
+})();
+const TwoValue = (function() {
+    function TwoValue() {
+        this.strategy = null;
+    }
+    TwoValue.prototype.setStrategy = function(strategy) {
+        this.strategy = strategy;
+    }
+    TwoValue.prototype.doAlgorithm = function(value) {
+        this.strategy.algorithm(value);
+    }
+    return TwoValue;
 })();
 
 // 값 1개
@@ -90,25 +102,77 @@ const exponentiation = (function() {
 })();
 
 
-let context = new Context();
+let oneValue = new OneValue();
 
 // 팩토리얼
-// context.setStrategy(new factorial());
-// context.doAlgorithm(3);
+// oneValue.setStrategy(new factorial());
+// oneValue.doAlgorithm(3);
 // // 팩토리얼
 
-// context.setStrategy(new absolute());
-// context.doAlgorithm(-5);
+// oneValue.setStrategy(new absolute());
+// oneValue.doAlgorithm(-5);
 
 // const set = {
 //     setOperation(operation) {
-//       return context.setStrategy(new operation());
+//       return oneValue.setStrategy(new operation());
 //     }
 // }
 // const dooneValue = {
 //     doExecute(number) {
-//       return context.doAlgorithm(number);
+//       return oneValue.doAlgorithm(number);
 //     }
 // }
 
-const facto = Object.assign({}, context.setStrategy(new factorial()), context.doAlgorithm(3)); // 메서드 팩토리 패턴이 맞는지
+const facto = Object.assign({}, OneValue.setStrategy(new factorial()), OneValue.doAlgorithm(3)); // 메서드 팩토리 패턴이 맞는지
+
+// const OneMethod = Operation => {
+//     let orderItem = createConstructor(Operation);
+    
+//     OneValue.setStrategy(orderItem);
+//     OneValue.doAlgorithm(3);
+  
+//     return orderItem;
+//   };
+  
+//   const oneFactory = Operation => {
+//     let orderItem;
+      
+//       if (Operation === 'coffee') {
+//         orderItem = new CoffeeOrder();
+//       } else if (Operation === 'bread') {
+//         orderItem = new BreadOrder();
+//       } else if (Operation === 'juice') {
+//         orderItem = new JuiceOrder();
+//       }
+      
+//       return orderItem;
+//   }
+
+var Section = function(){}
+var PersonalSection = new Section();
+var AlbumSection = new Section();
+var PatentSection = new Section();
+var PublicationSection = new Section();
+
+var SNS = function(){
+    SNS.prototype.sections = {};
+    SNS.prototype.createProfile = function(){};
+    SNS.prototype.getSections = function(){
+        return this.sections;
+    }
+    SNS.prototype.addSection = function(section){
+        this.sections.push(section)
+    }
+}
+
+const Facebook = new SNS();
+Facebook.prototype.createProfile = function(){
+    addSection(new PersonalSection());
+    addSection(new PatentSection());
+    addSection(new PublicationSection());
+}
+const Twitter = new SNS();
+Twitter.prototype.createProfile = function(){
+    addSection(new PersonalSection());
+    addSection(new AlbumSection());
+}
