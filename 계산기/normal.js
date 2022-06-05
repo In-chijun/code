@@ -19,7 +19,7 @@ const setCalculation = (function () {
     return setCalculation;
 })();
 
-// 값 1개
+// 공학
 const pi = (function () {
     function pi() { }
     pi.prototype.algorithm = function (value) {
@@ -50,7 +50,14 @@ const factorial = (function () {
     };
     return factorial;
 })();
-// 값 2개
+const exponentiation = (function () {
+    function exponentiation() { }
+    exponentiation.prototype.algorithm = function (value1, value2) {
+        console.log(Math.pow(value1, value2));
+    };
+    return exponentiation;
+})();
+// 일반
 const plus = (function () {
     function plus() { }
     plus.prototype.algorithm = function (value1, value2) {
@@ -79,14 +86,6 @@ const division = (function () {
     };
     return division;
 })();
-const exponentiation = (function () {
-    function exponentiation() { }
-    exponentiation.prototype.algorithm = function (value1, value2) {
-        console.log(Math.pow(value1, value2));
-    };
-    return exponentiation;
-})();
-
 
 let oneValue = new OneValue();
 
