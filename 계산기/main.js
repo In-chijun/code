@@ -17,7 +17,6 @@ const CalculatorFactory = (function () {
             'BMI': BMICalculator,
             'Percent': PercentCalculator,
             'Normal': NormalCalculator,
-            // 'Grade': new GradeCalculator(),
             'Salary': SalaryCalculator
         }[calculatorType];
     }
@@ -31,23 +30,29 @@ const CalculatorStrategy = (function () {
     CalculatorStrategy.prototype.setStrategy = function (calculator) {
         this.calculator = CalculatorFactory.create(calculator);
     };
-    CalculatorStrategy.prototype.doAlgorithm = function () {
+    CalculatorStrategy.prototype.doIntroduce = function () {
         this.calculator.introduce();
+    }
+    CalculatorStrategy.prototype.doCalculate = function () {
         this.calculator.input();
+    }
+    CalculatorStrategy.prototype.doPrint = function () {
         this.calculator.print();
     }
     return CalculatorStrategy;
 })();
 
 
+
 const Main = type => {
     let check = 0;
     let calculatorStrategy = new CalculatorStrategy();
-    do {
-        console.log("계산기.\n1. BMI 계산기 2. 퍼센트 계산기 3. 일반(공학)계산기 4. 학점계산기 5. 시급 계산기");
-        calculatorStrategy.setStrategy(type);
-        calculatorStrategy.doAlgorithm();
-    } while (check != 0)
+    console.log("계산기.\n1. BMI 계산기 2. 퍼센트 계산기 3. 일반(공학)계산기 4. 학점계산기 5. 시급 계산기");
+
+    calculatorStrategy.setStrategy(type);
+    calculatorStrategy.doIntroduce();
+    calculatorStrategy.doCalculate();
+    calculatorStrategy.doPrint();
 }
 
 // BMI 계산기 선택 후, 키 177, 몸무게 72를 입력했을 때, 나올 수 있는 로직 
