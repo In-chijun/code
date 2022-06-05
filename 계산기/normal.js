@@ -89,28 +89,8 @@ const exponentiation = (function () {
 
 
 let oneValue = new OneValue();
-
-// 팩토리얼
-// oneValue.setStrategy(new factorial());
-// oneValue.doAlgorithm(3);
-// // 팩토리얼
-
-// const OneMethod = Operation => {
-//     let orderItem = createConstructor(Operation);
-
-//     OneValue.setStrategy(orderItem);
-//     OneValue.doAlgorithm(3);
-
-//     return orderItem;
-// };
-
-// const oneFactory = operation => {
-//     return {
-        // 'coffee': new CoffeeOrder(),
-        // 'bread': new BreadOrder(),
-        // 'juice': new JuiceOrder()
-//     }[operation];
-// }
+oneValue.setStrategy(new factorial());
+oneValue.doAlgorithm(3);
 
 var Caculation = (function() {
     function Caculation(value1, value2) {
