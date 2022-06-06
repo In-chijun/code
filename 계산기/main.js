@@ -3,7 +3,6 @@ const { SalaryCalculator } = require('../.vscode/Calculator/salaryCalculator.js'
 const { NormalCalculator } = require('./Calculator/NormalCalculator.js');
 const { PercentCalculator } = require('../.vscode/Calculator/PercentCalculator.js');
 
-
 // class GradeCalculator extends Calculator { }
 
 const CalculatorFactory = (function () {
@@ -39,8 +38,6 @@ const CalculatorStrategy = (function () {
     return CalculatorStrategy;
 })();
 
-
-
 const Main = type => {
     let calculatorStrategy = new CalculatorStrategy();
     console.log(type + "계산기 테스트입니다.");
@@ -50,7 +47,6 @@ const Main = type => {
     calculatorStrategy.doCalculate();
     calculatorStrategy.doPrint();
 }
-
 
 // BMI 계산기 
 // Main("BMI");
@@ -63,5 +59,3 @@ Main("Normal");
 
 // 시급 계산기 -> 시급 + 세금 + 주휴수당 부르는 예시 || 퍼사드 패턴 
 // Main("Salary");
-
-
