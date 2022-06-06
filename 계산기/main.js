@@ -1,10 +1,7 @@
-const readline = require('readline');
-const { Calculator } = require('../.vscode/Calculator/Calculator.js');
 const { BMICalculator } = require('../.vscode/Calculator/BMICalculator.js');
 const { SalaryCalculator } = require('../.vscode/Calculator/salaryCalculator.js');
-const { NormalCalculator } = require('../.vscode/Calculator/NomalCalculator.js');
+const { NormalCalculator } = require('./Calculator/NormalCalculator.js');
 const { PercentCalculator } = require('../.vscode/Calculator/PercentCalculator.js');
-const { type } = require('os');
 
 
 // class GradeCalculator extends Calculator { }
@@ -34,7 +31,7 @@ const CalculatorStrategy = (function () {
         this.calculator.introduce();
     }
     CalculatorStrategy.prototype.doCalculate = function () {
-        this.calculator.input();
+        this.calculator.calculate();
     }
     CalculatorStrategy.prototype.doPrint = function () {
         this.calculator.print();
@@ -45,9 +42,8 @@ const CalculatorStrategy = (function () {
 
 
 const Main = type => {
-    let check = 0;
     let calculatorStrategy = new CalculatorStrategy();
-    console.log("계산기.\n1. BMI 계산기 2. 퍼센트 계산기 3. 일반(공학)계산기 4. 학점계산기 5. 시급 계산기");
+    console.log(type + "계산기 테스트입니다.");
 
     calculatorStrategy.setStrategy(type);
     calculatorStrategy.doIntroduce();
@@ -55,8 +51,17 @@ const Main = type => {
     calculatorStrategy.doPrint();
 }
 
-// BMI 계산기 선택 후, 키 177, 몸무게 72를 입력했을 때, 나올 수 있는 로직 
-Main("Salary");
 
-// node .vscode/calculator_main
+// BMI 계산기 
+// Main("BMI");
+
+// 퍼센트 계산기 -> 비율에 관한 계산기의비율을 연산해주는 예시 || 템플릿 패턴
+// Main("Percent");
+
+// 일반 계산기 -> 1 + 2 를 연산하는 예시 || builder 패턴 
+Main("Normal");
+
+// 시급 계산기 -> 시급 + 세금 + 주휴수당 부르는 예시 || 퍼사드 패턴 
+// Main("Salary");
+
 

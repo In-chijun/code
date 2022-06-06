@@ -1,120 +1,55 @@
-var oneValue = function (value) {
-    this.value = value
+const { Calculator } = require('./Calculator.js');
+
+let NormalCalculator = new Calculator();
+
+let Calculation = (function () {
+    function Calculation(operator, value1, value2) {
+        this.operator = operator;
+        this.value1 = value1 || null;
+        this.value2 = value2 || null;
+    }
+    Calculation.prototype.calculate = function () {
+        console.log(this.operator + "연산을" + this.value1 + "과" + this.value2 + "값으로 연산해줍니다");
+    }
+    return Calculation;
+})();
+
+let makeCalculation = function (operator) {
+    var value1 = null;
+    var value2 = null;
+    return {
+        setVal1: function (number) {
+            value1 = number;
+            return this;
+        },
+        setVal2: function (number) {
+            value2 = number;
+            return this;
+        },
+        build: function () {
+            return new Calculation(operator, value1, value2);
+        }
+    };
+};
+
+// 소개
+NormalCalculator.introduce = function () {
+    console.log("일반 계산기를 선택하셨습니다!");
+};
+
+// 값을 입력 받음 -> 연산
+NormalCalculator.calculate = function (type) {
+    console.log("NormalCalculator 의 calculate 메서드입니다.");
+    
+    // builder 패턴으로 1 + 2라는 연산을 수행해주는 예시 
+    var plus = makeCalculation('Plus').setVal1(1).setVal2(2).build();
+    plus.calculate();
+};
+
+
+NormalCalculator.print = function () {
+    console.log("NormalCalculator 의 print 메서드입니다.");
 }
-var twoValue = function (value1, value2) {
-    this.value1 = value1
-    this.value2 = value2
-}
 
-const setCalculation = (function () {
-    function setCalculation() {
-        this.strategy = null;
-    }
-    setCalculation.prototype.setStrategy = function (strategy) {
-        this.strategy = strategy;
-    }
-    setCalculation.prototype.doAlgorithm = function () {
-        this.strategy.algorithm.apply(null, args);
-    }
-    return setCalculation;
-})();
 
-// 공학
-const pi = (function () {
-    function pi() { }
-    pi.prototype.algorithm = function (value) {
-        console.log(Math.PI * value);
-    };
-    return pi;
-})();
-const absolute = (function () {
-    function absolute() { }
-    absolute.prototype.algorithm = function (value) {
-        console.log(Math.abs(value));
-    };
-    return absolute;
-})();
-const squareRoot = (function () {
-    function squareRoot() { }
-    squareRoot.prototype.algorithm = function (value) {
-        console.log(Math.sqrt(value));
-    };
-    return squareRoot;
-})();
-const factorial = (function () {
-    function factorial() { }
-    factorial.prototype.algorithm = function (value) {
-        result = 1;
-        for (value; value > 1; value--) result *= value;
-        console.log(result);
-    };
-    return factorial;
-})();
-const exponentiation = (function () {
-    function exponentiation() { }
-    exponentiation.prototype.algorithm = function (value1, value2) {
-        console.log(Math.pow(value1, value2));
-    };
-    return exponentiation;
-})();
-// 일반
-const plus = (function () {
-    function plus() { }
-    plus.prototype.algorithm = function (value1, value2) {
-        console.log(value1 + value2);
-    };
-    return plus;
-})();
-const minus = (function () {
-    function minus() { }
-    minus.prototype.algorithm = function (value1, value2) {
-        console.log(value1 - value2);
-    };
-    return minus;
-})();
-const multiplication = (function () {
-    function multiplication() { }
-    multiplication.prototype.algorithm = function (value1, value2) {
-        console.log(value1 * value2);
-    };
-    return multiplication;
-})();
-const division = (function () {
-    function division() { }
-    division.prototype.algorithm = function (value1, value2) {
-        console.log(value1 / value2);
-    };
-    return division;
-})();
-
-let oneValue = new OneValue();
-oneValue.setStrategy(new factorial());
-oneValue.doAlgorithm(3);
-
-var Caculation = (function() {
-    function Caculation(value1, value2) {
-      this.value1 = value1;
-      this.value2 = value2 || 0;
-    }
-    Caculation.prototype.action = function(value) {
-        setCalculation.doAlgorithm(value);
-    };
-    return Caculation;
-  })();
-  var makeCalculation = operation => {
-        return {
-            'factorial': new factorial(),
-            'pi': new pi(),
-            'squareRoot': new squareRoot(),
-            'absolute': new absolute(),
-            'plus': new plus(),
-            'multiplication': new multiplication(),
-            'exponentiation': new exponentiation(),
-            'minus': new minus(),
-            'division': new division(),
-        }[operation];
-      };
-var galbaLegion = makeLegion('galba').setAdjutant(['otho', 'vindex', 'vitellius']).setArmy(8000).build();
-var rufusLegion = makeLegion('rufus').setArmy(10000).build();
-console.log(galbaLegion)
-console.log(rufusLegion.attack(galbaLegion));
+module.exports = { NormalCalculator };

@@ -39,7 +39,7 @@ InDecreaseCalculator.typeValueInput = function () {
 };
 
 
-
+// 비율에 관한 계산기의 숫자, 비율을 연산해주는 부분
 let RatioNumCalculator = RatioCalculator;
 let RatioRateCalculator = RatioCalculator;
 
@@ -51,6 +51,7 @@ RatioRateCalculator.calculate = function () {
 };
 
 
+// 증감에 관한 계산기의 숫자, 비율을 연산해주는 부분
 let InDecreaseNumCalculator = InDecreaseCalculator;
 let InDecreaseRateCalculator = InDecreaseCalculator;
 InDecreaseNumCalculator.calculate = function () {
@@ -65,14 +66,11 @@ PercentCalculator.introduce = function () {
     console.log("퍼센트 계산기를 선택하셨습니다!");
 };
 
-PercentCalculator.input = function () {
-    return this.calculate();
-};
 
 // 연산
 PercentCalculator.calculate = function () {
     console.log("퍼센트 계산기의 결과를 나타내는 calculate 메서드");
-    // RatioNumCalculator.tempCalculate();
+    RatioNumCalculator.tempCalculate();
     // RatioRateCalculator.tempCalculate();
     // InDecreaseNumCalculator.tempCalculate();
     // InDecreaseRateCalculator.tempCalculate();

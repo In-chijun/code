@@ -67,29 +67,24 @@ const CalculateSalary = (function () {
 
 
 
-
-
 // 소개
 SalaryCalculator.introduce = function () {
     console.log("시급 계산기를 선택하셨습니다!");
 };
 
-//키와 체중을 입력 받음
-SalaryCalculator.input = function () {
-
-    console.log("SalaryCalculator의 input메서드 입니다. ")
-    return this.calculate();
-};
 
 // 연산
 SalaryCalculator.calculate = function () {
     this.CalculateSalary = new CalculateSalary();
-
-    //퍼사드 패턴 사용부분 
-    this.CalculateSalary.timeDayCalculate();
-    this.CalculateSalary.timeDayHolydayCaculate();
+    console.log("PercentCalculator의 calculate 메서드입니다.");
+    // 퍼사드 패턴 사용부분 
+    // 시급 + 세금 계산 
+    // this.CalculateSalary.timeDayTaxCaculate();
+    // // 시급 + 주휴수당 계산
+    // this.CalculateSalary.timeDayHolydayCaculate();
+    // 시급 + 주휴수당 + 세금 계산
     this.CalculateSalary.timeDayHolydayTaxCaculate();
-}
+};
 
 
 SalaryCalculator.print = function () {
