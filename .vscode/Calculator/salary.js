@@ -87,8 +87,8 @@ SalaryCalculator.calculate = function () {
 };
 
 
-SalaryCalculator.print = function () {
-   console.log("SalaryCalculator의 print 메서드입니다.");
+SalaryCalculator.result = function () {
+   console.log("SalaryCalculator의 result 메서드입니다.");
 }
 
 module.exports = { SalaryCalculator };

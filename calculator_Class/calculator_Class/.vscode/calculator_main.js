@@ -45,7 +45,6 @@ const CalculatorStrategy = (function () {
 
 const Main = type => {
     let calculatorStrategy = new CalculatorStrategy();
-    console.log(type + "계산기 테스트입니다.");
 
     calculatorStrategy.setStrategy(type);
     calculatorStrategy.doIntroduce();
@@ -56,12 +55,11 @@ const Main = type => {
 
 // Main("BMI");
 
-Main("Percent");
+// Main("Percent");
 
 // Main("Normal");
 
 // 시급 계산기 -> 시급 + 세금 + 주휴수당 부르는 로직 || 퍼사드 패턴 
 // Main("Salary");
-
 
 

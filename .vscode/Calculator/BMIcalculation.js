@@ -1,7 +1,7 @@
 const { Calculator } = require('../Calculator/Calculator.js');
 
 
-var BMICalculator = new Calculator();
+let BMICalculator = new Calculator();
 
 // 소개
 BMICalculator.introduce = function () {
@@ -16,7 +16,7 @@ BMICalculator.calculate = function () {
 }
 
 
-BMICalculator.print = function () {
+BMICalculator.result = function () {
 
     console.log("BMI 계산기의 결과를 나타내주는 메서드입니다.");
 }
